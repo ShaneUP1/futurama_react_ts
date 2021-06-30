@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import CharacterCard from './CharacterCard'
 import request from 'superagent'
 
-// interface Props {
-//   characters: Character[]
-// }
-
 const CharacterList: React.FC = () => {
-  const [characters, setCharacters] = useState<Character[]>([])
+  const [characters, setCharacters] = useState<Character []>([])
 
   useEffect(() => {
     const dataFetch = async () => {
@@ -20,9 +17,11 @@ const CharacterList: React.FC = () => {
   return (
     <div>
       {characters.map(character => (
+        <Link to={`/${character.Name}`}>
         <div key={character.Profession} >
           <CharacterCard {...character} />
         </div>
+        </Link>
       ))
       }
     </div>

@@ -1,12 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import CharacterList from './character/CharacterList';
+import CharacterDetail from './character/CharacterDetail';
+import Header from './header/Header';
 
 function App() {
   return (
     <div className="App">
-      <CharacterList />
+      <Header />
+      <Router>
+        <Route exact path='/' component={CharacterList} />
+        <Route exact path='/:name' component={CharacterDetail} />
+      </Router>
     </div>
   );
 }
